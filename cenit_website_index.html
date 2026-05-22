@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cénit Soluciones Biomédicas — Consultoría, equipamiento médico y capacitación especializada. Tecnología al servicio de la salud. Chiapas, México.">
+<meta name="keywords" content="consultoría biomédica, equipamiento médico, capacitación médica, ingeniería biomédica, Chiapas, México">
+<meta property="og:title" content="Cénit Soluciones Biomédicas">
+<meta property="og:description" content="Tecnología al servicio de la salud. Consultoría, equipamiento y capacitación especializada.">
+<meta property="og:type" content="website">
+
+<title>Cénit Soluciones Biomédicas</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130 50'><rect width='130' height='50' fill='%231B2D5C' rx='8'/><polyline points='10,25 20,25 26,15 34,35 40,20 48,25 56,25' fill='none' stroke='%23FFFFFF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><g stroke='%23FFFFFF' fill='%23FFFFFF'><line x1='65' y1='18' x2='75' y2='12'/><line x1='75' y1='12' x2='85' y2='16'/><line x1='85' y1='16' x2='95' y2='12'/><line x1='95' y1='12' x2='102' y2='20'/><circle cx='65' cy='18' r='2'/><circle cx='75' cy='12' r='2'/><circle cx='85' cy='16' r='2.5'/><circle cx='95' cy='12' r='2'/><circle cx='102' cy='20' r='2.5'/></g></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+
+<style>
+/* ─── RESET & BASE ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:      #1B2D5C;
+  --navy-mid:  #2A4080;
+  --navy-dark: #0F1E3D;
+  --accent:    #2E7DD1;
+  --accent-l:  #6BAEE0;
+  --gray-d:    #374151;
+  --gray-m:    #6B7280;
+  --gray-l:    #F4F5F7;
+  --border:    #E5E7EB;
+  --white:     #FFFFFF;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-ui:      'Barlow', sans-serif;
+  --font-body:    'Source Sans 3', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--gray-d);
+  background: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ─── SCROLLBAR ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--navy-dark); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+/* ─── UTILITIES ───────────────────────────────────────────── */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-ui); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1rem;
+}
+.section-tag::before {
+  content: ''; display: block; width: 24px; height: 2px;
+  background: var(--accent); flex-shrink: 0;
+}
+
+/* ─── ANIMATIONS ──────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes drawLine {
+  from { stroke-dashoffset: 400; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.6); opacity: 0.6; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── NAV ─────────────────────────────────────────────────── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0; transition: all 0.3s ease;
+}
+
+#nav.scrolled {
+  background: rgba(15, 30, 61, 0.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(46,125,209,0.2);
+}
+
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px; max-width: 1180px; margin: 0 auto; padding: 0 2rem;
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  cursor: pointer;
+}
+.nav-logo-type {
+  font-family: var(--font-display); font-weight: 800; font-size: 22px;
+  color: var(--white); letter-spacing: 2px;
+}
+.nav-logo-sub {
+  font-family: var(--font-body); font-size: 8.5px;
+  color: rgba(255,255,255,0.45); letter-spacing: 0.8px;
+  text-transform: uppercase; margin-top: 1px;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 0; list-style: none;
+}
+.nav-links a {
+  display: block; padding: 8px 16px;
+  font-family: var(--font-ui); font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 2px; left: 16px; right: 16px;
+  height: 2px; background: var(--accent);
+  transform: scaleX(0); transition: transform 0.2s;
+  transform-origin: left;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  background: var(--accent); color: var(--white) !important;
+  padding: 8px 20px !important; border-radius: 6px;
+  font-weight: 600 !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: #1E6EC0 !important; }
+.nav-cta::after { display: none !important; }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 8px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: white; border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ─── MOBILE NAV ──────────────────────────────────────────── */
+.mobile-menu {
+  display: none; position: fixed; top: 68px; left: 0; right: 0;
+  background: rgba(15,30,61,0.98); backdrop-filter: blur(20px);
+  padding: 1.5rem 2rem 2rem; z-index: 999;
+  border-top: 1px solid rgba(46,125,209,0.2);
+  border-bottom: 1px solid rgba(46,125,209,0.2);
+}
+.mobile-menu.open { display: block; }
+.mobile-menu a {
+  display: block; padding: 12px 0;
+  font-family: var(--font-ui); font-size: 15px; font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-menu a:last-child { border-bottom: none; }
+
+/* ─── HERO ────────────────────────────────────────────────── */
+#hero {
+  min-height: 100vh; background: var(--navy-dark);
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+  padding-top: 68px;
+}
+
+/* Grid de puntos de fondo */
+#hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(46,125,209,0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.6;
+}
+
+/* Gradiente inferior */
+#hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--navy-dark));
+}
+
+.hero-bg-circle {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(46,125,209,0.12), transparent 70%);
+  animation: float 8s ease-in-out infinite;
+}
+.hero-bg-circle-1 { width: 600px; height: 600px; top: -150px; right: -100px; }
+.hero-bg-circle-2 { width: 400px; height: 400px; bottom: 50px; left: -100px; animation-delay: -4s; }
+
+.hero-content {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+  padding: 5rem 0 6rem;
+}
+
+.hero-left { animation: fadeUp 0.9s ease both; }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent-l); margin-bottom: 1.5rem;
+}
+.hero-tag-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.hero-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 0.95; letter-spacing: -1px;
+  color: var(--white); margin-bottom: 1.5rem;
+}
+.hero-title-accent { color: var(--accent); display: block; }
+
+.hero-desc {
+  font-size: 16px; color: rgba(255,255,255,0.6);
+  line-height: 1.75; max-width: 480px; margin-bottom: 2.5rem;
+}
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: 8px;
+  font-family: var(--font-ui); font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; border: none;
+  letter-spacing: 0.02em;
+}
+.btn-primary {
+  background: var(--accent); color: var(--white);
+}
+.btn-primary:hover { background: #1E6EC0; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(46,125,209,0.4); }
+
+.btn-outline {
+  background: transparent; color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.hero-stat-num {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 36px; color: var(--white); line-height: 1;
+}
+.hero-stat-num span { color: var(--accent); }
+.hero-stat-label {
+  font-size: 11px; color: rgba(255,255,255,0.4);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px;
+}
+
+/* SVG hero lado derecho */
+.hero-right {
+  display: flex; justify-content: center; align-items: center;
+  animation: fadeIn 1.2s ease 0.3s both;
+  position: relative;
+}
+
+.hero-visual {
+  position: relative; width: 100%; max-width: 520px;
+}
+
+.ecg-container {
+  width: 100%; aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Anillo giratorio decorativo */
+.orbit-ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(46,125,209,0.2);
+}
+.orbit-ring-1 { width: 320px; height: 320px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spin-slow 40s linear infinite; }
+.orbit-ring-2 { width: 450px; height: 450px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spin-slow 60s linear infinite reverse; }
+
+/* Etiquetas flotantes */
+.float-badge {
+  position: absolute; background: rgba(27,45,92,0.9);
+  border: 1px solid rgba(46,125,209,0.3);
+  backdrop-filter: blur(12px);
+  border-radius: 10px; padding: 10px 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.float-badge-icon { font-size: 16px; }
+.float-badge-text { font-family: var(--font-ui); font-size: 11px; font-weight: 600; color: white; }
+.float-badge-sub { font-size: 9px; color: var(--accent-l); margin-top: 1px; }
+
+.badge-a { top: 8%; right: 2%; animation: float 5s ease-in-out infinite; }
+.badge-b { bottom: 12%; left: 0%; animation: float 6s ease-in-out -2s infinite; }
+.badge-c { top: 45%; right: -2%; animation: float 7s ease-in-out -1s infinite; }
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  z-index: 2; opacity: 0.5;
+  animation: fadeIn 2s ease 1.5s both;
+}
+.scroll-indicator span {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6); font-family: var(--font-ui);
+}
+.scroll-mouse {
+  width: 20px; height: 30px; border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 10px; position: relative;
+}
+.scroll-mouse::before {
+  content: ''; position: absolute;
+  width: 3px; height: 6px; background: var(--accent);
+  border-radius: 2px; top: 5px; left: 50%; transform: translateX(-50%);
+  animation: fadeUp 1.5s ease infinite;
+}
+
+/* ─── SERVICIOS ───────────────────────────────────────────── */
+#servicios {
+  padding: 7rem 0; background: var(--white);
+}
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px; margin-top: 4rem;
+  background: var(--border);
+  border: 1.5px solid var(--border); border-radius: 16px; overflow: hidden;
+}
+
+.service-card {
+  background: var(--white); padding: 2.5rem 2rem;
+  transition: all 0.3s ease; cursor: default;
+  position: relative; overflow: hidden;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent); transform: scaleX(0);
+  transition: transform 0.3s ease; transform-origin: left;
+}
+.service-card:hover { background: var(--gray-l); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover .service-icon-wrap { background: var(--navy); }
+.service-card:hover .service-icon-wrap svg { color: white; }
+
+.service-icon-wrap {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: var(--gray-l); display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.25rem; transition: background 0.3s;
+}
+.service-icon-wrap svg { width: 24px; height: 24px; color: var(--navy); transition: color 0.3s; }
+
+.service-num {
+  position: absolute; top: 1.25rem; right: 1.5rem;
+  font-family: var(--font-display); font-size: 48px; font-weight: 800;
+  color: var(--border); line-height: 1; user-select: none;
+  transition: color 0.3s;
+}
+.service-card:hover .service-num { color: var(--gray-l); }
+
+.service-title {
+  font-family: var(--font-ui); font-size: 16px; font-weight: 600;
+  color: var(--navy); margin-bottom: 0.75rem; line-height: 1.3;
+}
+
+.service-desc {
+  font-size: 13.5px; color: var(--gray-m); line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.service-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.service-tag {
+  font-family: var(--font-ui); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--accent); padding: 3px 9px;
+  background: rgba(46,125,209,0.08); border-radius: 20px;
+}
+
+/* ─── NOSOTROS ────────────────────────────────────────────── */
+#nosotros {
+  padding: 7rem 0;
+  background: var(--navy-dark);
+  position: relative; overflow: hidden;
+}
+
+/* Patrón diagonal sutil */
+#nosotros::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent, transparent 60px,
+    rgba(46,125,209,0.03) 60px, rgba(46,125,209,0.03) 61px
+  );
+}
+
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: center;
+  position: relative; z-index: 1;
+}
+
+.about-left .section-tag { color: var(--accent-l); }
+.about-left .section-tag::before { background: var(--accent-l); }
+
+.about-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1; letter-spacing: -0.5px;
+  color: var(--white); margin-bottom: 1.5rem;
+}
+
+.about-text {
+  font-size: 15.5px; color: rgba(255,255,255,0.6);
+  line-height: 1.8; margin-bottom: 2rem;
+}
+
+.about-values {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin-top: 2.5rem;
+}
+
+.about-value {
+  padding: 1.25rem; border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s;
+}
+.about-value:hover {
+  background: rgba(46,125,209,0.1);
+  border-color: rgba(46,125,209,0.3);
+}
+.about-value-title {
+  font-family: var(--font-ui); font-size: 12px; font-weight: 700;
+  color: var(--accent-l); text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.about-value-text {
+  font-size: 12.5px; color: rgba(255,255,255,0.45); line-height: 1.5;
+}
+
+/* Lado derecho: tarjetas apiladas */
+.about-right { position: relative; padding: 2rem 0; }
+
+.about-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 1.5rem 2rem;
+  margin-bottom: 1rem;
+  display: flex; align-items: flex-start; gap: 1rem;
+  transition: all 0.3s;
+}
+.about-card:hover {
+  background: rgba(46,125,209,0.12);
+  border-color: rgba(46,125,209,0.35);
+  transform: translateX(6px);
+}
+.about-card-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: rgba(46,125,209,0.15); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-card-icon svg { width: 20px; height: 20px; color: var(--accent-l); }
+.about-card-title {
+  font-family: var(--font-ui); font-size: 13px; font-weight: 600;
+  color: var(--white); margin-bottom: 4px;
+}
+.about-card-text {
+  font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.55;
+}
+
+/* ─── ESTADÍSTICAS ────────────────────────────────────────── */
+#estadisticas {
+  padding: 6rem 0;
+  background: var(--accent);
+  position: relative; overflow: hidden;
+}
+
+#estadisticas::before {
+  content: '';
+  position: absolute; top: -80px; right: -80px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+#estadisticas::after {
+  content: '';
+  position: absolute; bottom: -60px; left: -60px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; position: relative; z-index: 1;
+}
+
+.stat-item {
+  padding: 1.5rem 2rem; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+.stat-item:last-child { border-right: none; }
+
+.stat-number {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(44px, 5vw, 64px);
+  color: var(--white); line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-suffix { font-size: 0.65em; opacity: 0.8; }
+.stat-label {
+  font-family: var(--font-ui); font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.12em;
+}
+
+/* ─── POR QUÉ CÉNIT ───────────────────────────────────────── */
+#porque {
+  padding: 7rem 0; background: var(--white);
+}
+
+.why-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr;
+  gap: 5rem; align-items: start; margin-top: 4rem;
+}
+
+.why-left { position: sticky; top: 120px; }
+
+.why-headline {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(36px, 4vw, 52px);
+  line-height: 1; letter-spacing: -0.5px;
+  color: var(--navy); margin-bottom: 1.5rem;
+}
+
+.why-sub {
+  font-size: 15px; color: var(--gray-m); line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.why-cta-block {
+  background: var(--navy); border-radius: 14px; padding: 2rem;
+  margin-top: 2.5rem;
+}
+.why-cta-title {
+  font-family: var(--font-ui); font-size: 14px; font-weight: 600;
+  color: var(--white); margin-bottom: 8px;
+}
+.why-cta-text {
+  font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.why-items { display: flex; flex-direction: column; gap: 1px; }
+
+.why-item {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  transition: all 0.3s;
+}
+.why-item:first-child { padding-top: 0; }
+.why-item:last-child { border-bottom: none; }
+.why-item:hover .why-item-num { color: var(--accent); }
+.why-item:hover .why-item-title { color: var(--accent); }
+
+.why-item-num {
+  font-family: var(--font-display); font-weight: 800; font-size: 13px;
+  color: var(--border); transition: color 0.3s; flex-shrink: 0;
+  margin-top: 3px;
+}
+.why-item-body {}
+.why-item-title {
+  font-family: var(--font-ui); font-size: 16px; font-weight: 600;
+  color: var(--navy); margin-bottom: 6px; transition: color 0.3s;
+}
+.why-item-text {
+  font-size: 13.5px; color: var(--gray-m); line-height: 1.65;
+}
+
+/* ─── SECTORES ────────────────────────────────────────────── */
+#sectores {
+  padding: 7rem 0;
+  background: var(--gray-l);
+}
+
+.sectors-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; margin-top: 3.5rem;
+}
+
+.sector-card {
+  background: var(--white); border-radius: 14px; padding: 2rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.sector-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(to right, var(--navy), var(--accent));
+  transform: scaleX(0); transition: transform 0.3s;
+  transform-origin: left;
+}
+.sector-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(27,45,92,0.12); }
+.sector-card:hover::after { transform: scaleX(1); }
+
+.sector-emoji { font-size: 32px; margin-bottom: 1rem; display: block; }
+.sector-title {
+  font-family: var(--font-ui); font-size: 16px; font-weight: 600;
+  color: var(--navy); margin-bottom: 8px;
+}
+.sector-text {
+  font-size: 13px; color: var(--gray-m); line-height: 1.65;
+}
+
+/* ─── PROCESO ─────────────────────────────────────────────── */
+#proceso {
+  padding: 7rem 0; background: var(--white);
+}
+
+.process-steps {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 0; margin-top: 4rem; position: relative;
+}
+
+/* Línea conectora */
+.process-steps::before {
+  content: ''; position: absolute;
+  top: 32px; left: calc(10% + 16px); right: calc(10% + 16px);
+  height: 2px; background: var(--border); z-index: 0;
+}
+
+.process-step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 1rem;
+  position: relative; z-index: 1;
+}
+
+.step-circle {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--white); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem; transition: all 0.3s;
+  position: relative;
+}
+.process-step:hover .step-circle {
+  background: var(--navy); border-color: var(--navy);
+}
+.process-step:hover .step-circle svg { color: white; }
+.step-circle svg { width: 24px; height: 24px; color: var(--navy); transition: color 0.3s; }
+
+.step-num {
+  position: absolute; top: -6px; right: -6px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent); color: white;
+  font-family: var(--font-display); font-size: 10px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.step-title {
+  font-family: var(--font-ui); font-size: 13px; font-weight: 600;
+  color: var(--navy); margin-bottom: 6px;
+}
+.step-text { font-size: 12px; color: var(--gray-m); line-height: 1.55; }
+
+/* ─── CONTACTO ────────────────────────────────────────────── */
+#contacto {
+  padding: 7rem 0; background: var(--navy-dark);
+  position: relative; overflow: hidden;
+}
+
+#contacto::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(46,125,209,0.1) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; position: relative; z-index: 1;
+}
+
+.contact-left .section-tag { color: var(--accent-l); }
+.contact-left .section-tag::before { background: var(--accent-l); }
+
+.contact-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1; color: var(--white);
+  margin-bottom: 1.25rem; letter-spacing: -0.5px;
+}
+
+.contact-sub {
+  font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+
+.contact-info-items { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.contact-info-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.25rem; border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s; cursor: pointer;
+  text-decoration: none; color: inherit;
+}
+.contact-info-item:hover {
+  background: rgba(46,125,209,0.12);
+  border-color: rgba(46,125,209,0.3);
+  transform: translateX(6px);
+}
+.contact-info-icon {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: rgba(46,125,209,0.2); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.contact-info-icon svg { width: 18px; height: 18px; color: var(--accent-l); }
+.contact-info-label {
+  font-size: 10px; color: rgba(255,255,255,0.35);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  font-family: var(--font-ui); margin-bottom: 2px;
+}
+.contact-info-value {
+  font-size: 14px; color: var(--white); font-weight: 500;
+}
+
+/* Formulario */
+.contact-form {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; padding: 2.5rem;
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.form-group { margin-bottom: 1.25rem; }
+.form-group:last-of-type { margin-bottom: 0; }
+
+.form-label {
+  display: block; font-family: var(--font-ui); font-size: 11px;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.45); margin-bottom: 8px;
+}
+
+.form-input, .form-textarea, .form-select {
+  width: 100%; padding: 12px 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px; color: var(--white);
+  font-family: var(--font-body); font-size: 14px;
+  transition: all 0.2s; outline: none;
+  -webkit-appearance: none;
+}
+.form-input::placeholder, .form-textarea::placeholder {
+  color: rgba(255,255,255,0.2);
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--accent);
+  background: rgba(46,125,209,0.08);
+  box-shadow: 0 0 0 3px rgba(46,125,209,0.15);
+}
+.form-select option { background: var(--navy-dark); color: white; }
+
+.form-textarea { resize: vertical; min-height: 120px; }
+
+.form-submit {
+  width: 100%; padding: 14px;
+  background: var(--accent); color: var(--white);
+  border: none; border-radius: 8px;
+  font-family: var(--font-ui); font-size: 15px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; margin-top: 1.5rem;
+  letter-spacing: 0.02em;
+}
+.form-submit:hover {
+  background: #1E6EC0;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(46,125,209,0.4);
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+#footer {
+  background: var(--navy); padding: 4rem 0 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-brand-name {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 24px; color: var(--white); letter-spacing: 2px;
+  margin-bottom: 2px;
+}
+.footer-brand-sub {
+  font-size: 10px; color: rgba(255,255,255,0.35);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;
+}
+.footer-brand-desc {
+  font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7;
+  max-width: 260px;
+}
+
+.footer-col-title {
+  font-family: var(--font-ui); font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.35); margin-bottom: 1.25rem;
+}
+
+.footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links-list a {
+  font-size: 13px; color: rgba(255,255,255,0.5);
+  transition: color 0.2s;
+}
+.footer-links-list a:hover { color: var(--accent-l); }
+
+.footer-bottom {
+  padding: 1.5rem 0;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-copyright {
+  font-size: 12px; color: rgba(255,255,255,0.25);
+}
+.footer-tagline {
+  font-size: 12px; color: rgba(255,255,255,0.2);
+  font-style: italic;
+}
+
+/* ─── BANNER AVISO FORM ───────────────────────────────────── */
+.form-notice {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: rgba(46,125,209,0.1); border-radius: 8px;
+  padding: 10px 14px; margin-top: 1rem;
+  font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.5;
+}
+.form-notice svg { width: 14px; height: 14px; color: var(--accent-l); flex-shrink: 0; margin-top: 1px; }
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-content { gap: 3rem; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .hero-content { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 0 5rem; }
+  .hero-right { display: none; }
+  .hero-stats { gap: 1.5rem; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-right { display: none; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
+  .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .why-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .why-left { position: static; }
+
+  .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .process-steps { grid-template-columns: 1fr; gap: 2rem; }
+  .process-steps::before { display: none; }
+
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .about-values { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 1.25rem; }
+  .sectors-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .btn { justify-content: center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────────── -->
+<nav id="nav" role="navigation" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="Cénit — Inicio">
+      <svg width="52" height="28" viewBox="0 0 130 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- ECG LINE -->
+        <polyline
+          points="
+            2,25
+            18,25
+            26,24
+            34,12
+            42,40
+            50,16
+            58,25
+            66,25
+          "
+          fill="none"
+          stroke="rgba(255,255,255,0.92)"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+        <!-- DIGITAL NETWORK -->
+        <g
+          stroke="rgba(255,255,255,0.82)"
+          fill="rgba(255,255,255,0.92)"
+        >
+
+          <!-- CONNECTION LINES -->
+          <line x1="70" y1="18" x2="82" y2="10" stroke-width="1.4"/>
+          <line x1="82" y1="10" x2="95" y2="14" stroke-width="1.4"/>
+          <line x1="95" y1="14" x2="108" y2="9" stroke-width="1.4"/>
+          <line x1="108" y1="9" x2="118" y2="20" stroke-width="1.4"/>
+
+          <line x1="118" y1="20" x2="110" y2="31" stroke-width="1.4"/>
+          <line x1="110" y1="31" x2="96" y2="28" stroke-width="1.4"/>
+          <line x1="96" y1="28" x2="82" y2="22" stroke-width="1.4"/>
+          <line x1="82" y1="22" x2="70" y2="18" stroke-width="1.4"/>
+
+          <!-- INTERNAL CONNECTIONS -->
+          <line x1="82" y1="10" x2="96" y2="28" stroke-width="1.2"/>
+          <line x1="95" y1="14" x2="110" y2="31" stroke-width="1.2"/>
+          <line x1="95" y1="14" x2="96" y2="28" stroke-width="1.2"/>
+          <line x1="82" y1="22" x2="95" y2="14" stroke-width="1.2"/>
+          <line x1="82" y1="22" x2="96" y2="28" stroke-width="1.2"/>
+          <line x1="82" y1="10" x2="108" y2="9" stroke-width="1.2"/>
+
+          <!-- NODES -->
+          <circle cx="70" cy="18" r="3.6"/>
+          <circle cx="82" cy="10" r="3.8"/>
+          <circle cx="95" cy="14" r="4.2"/>
+          <circle cx="108" cy="9" r="3.8"/>
+          <circle cx="118" cy="20" r="4.6"/>
+          <circle cx="110" cy="31" r="4"/>
+          <circle cx="96" cy="28" r="4.2"/>
+          <circle cx="82" cy="22" r="3.8"/>
+
+        </g>
+      </svg>
+      <div>
+        <div class="nav-logo-type">CÉNIT</div>
+        <div class="nav-logo-sub">Soluciones Biomédicas</div>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#sectores">Sectores</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#contacto" class="nav-cta">Contáctanos</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Abrir menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menú móvil">
+  <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+  <a href="#nosotros" onclick="toggleMenu()">Nosotros</a>
+  <a href="#sectores" onclick="toggleMenu()">Sectores</a>
+  <a href="#proceso" onclick="toggleMenu()">Proceso</a>
+  <a href="#contacto" onclick="toggleMenu()">Contacto</a>
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section id="hero" aria-label="Inicio">
+  <div class="hero-bg-circle hero-bg-circle-1" aria-hidden="true"></div>
+  <div class="hero-bg-circle hero-bg-circle-2" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-tag">
+          <span class="hero-tag-dot" aria-hidden="true"></span>
+          Consultoría biomédica
+        </div>
+        <h1 class="hero-title">
+          Tecnología<br>
+          <span class="hero-title-accent">al servicio</span><br>
+          de la salud
+        </h1>
+        <p class="hero-desc">
+          Potenciamos las capacidades tecnológicas de hospitales, clínicas y laboratorios a través de consultoría especializada, equipamiento médico de vanguardia, mantenimiento y soporte técnico.
+        </p>
+        <div class="hero-actions">
+          <a href="#servicios" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Ver servicios
+          </a>
+          <a href="#contacto" class="btn btn-outline">Agendar consulta</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num"><span class="counter" data-target="10">0</span><span>+</span></div>
+            <div class="hero-stat-label">Proyectos</div>
+          </div>
+          <div>
+            <div class="hero-stat-num"><span class="counter" data-target="98">0</span><span>%</span></div>
+            <div class="hero-stat-label">Satisfacción</div>
+          </div>
+          <div>
+            <div class="hero-stat-num"><span class="counter" data-target="2">0</span><span>+</span></div>
+            <div class="hero-stat-label">Años</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="true">
+        <div class="hero-visual">
+          <div class="orbit-ring orbit-ring-1"></div>
+          <div class="orbit-ring orbit-ring-2"></div>
+
+          <!-- SVG Principal ECG + Red molecular animado -->
+          <div class="ecg-container">
+            <svg viewBox="0 0 480 270" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <!-- Glow defs -->
+              <defs>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:rgba(46,125,209,0)"/>
+                  <stop offset="40%" style="stop-color:rgba(46,125,209,0.9)"/>
+                  <stop offset="100%" style="stop-color:rgba(46,125,209,0.6)"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Grid de fondo -->
+              <g stroke="rgba(255,255,255,0.04)" stroke-width="0.5">
+                <line x1="0" y1="67" x2="480" y2="67"/>
+                <line x1="0" y1="135" x2="480" y2="135"/>
+                <line x1="0" y1="203" x2="480" y2="203"/>
+                <line x1="120" y1="0" x2="120" y2="270"/>
+                <line x1="240" y1="0" x2="240" y2="270"/>
+                <line x1="360" y1="0" x2="360" y2="270"/>
+              </g>
+
+              <!-- Línea ECG base -->
+              <polyline
+                points="0,135 40,135 60,135 75,80 88,190 100,110 112,135 170,135 185,135 200,60 212,210 224,100 236,135 310,135"
+                fill="none" stroke="url(#lineGrad)" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round"
+                filter="url(#glow)"
+                stroke-dasharray="400" stroke-dashoffset="400"
+                style="animation: drawLine 2s ease 0.5s both;"/>
+
+              <!-- Línea ECG segunda ola (tenue) -->
+              <polyline
+                points="310,135 330,135 342,100 352,165 360,135 420,135 430,135 440,120 450,150 458,135 480,135"
+                fill="none" stroke="rgba(46,125,209,0.35)" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round"
+                stroke-dasharray="300" stroke-dashoffset="300"
+                style="animation: drawLine 1.8s ease 2s both;"/>
+
+              <!-- Punto activo animado sobre ECG -->
+              <circle cx="112" cy="135" r="5" fill="#2E7DD1" opacity="0.9" filter="url(#glow)">
+                <animate attributeName="cx" values="0;112;310;480" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4,0,0.6,1; 0.4,0,0.6,1; 0.4,0,0.6,1"/>
+                <animate attributeName="cy" values="135;135;135;135" dur="4s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite"/>
+              </circle>
+
+              <!-- Red molecular (derecha) -->
+              <g opacity="0.9" style="animation: fadeIn 1s ease 2.5s both;">
+                <!-- Edges -->
+                <g stroke="rgba(46,125,209,0.5)" stroke-width="1.2" fill="none">
+                  <line x1="310" y1="135" x2="345" y2="100"/><line x1="345" y1="100" x2="385" y2="115"/>
+                  <line x1="385" y1="115" x2="415" y2="90"/><line x1="415" y1="90" x2="445" y2="110"/>
+                  <line x1="445" y1="110" x2="435" y2="145"/><line x1="435" y1="145" x2="400" y2="155"/>
+                  <line x1="400" y1="155" x2="310" y2="135"/><line x1="385" y1="115" x2="435" y2="145"/>
+                  <line x1="345" y1="100" x2="435" y2="145"/>
+                  <line x1="385" y1="115" x2="400" y2="155"/>
+                  <!-- Segunda capa -->
+                  <line x1="415" y1="90" x2="438" y2="72"/><line x1="438" y1="72" x2="462" y2="88"/>
+                  <line x1="462" y1="88" x2="458" y2="110"/><line x1="462" y1="88" x2="445" y2="110"/>
+                </g>
+                <!-- Nodes -->
+                <g filter="url(#glow)">
+                  <circle cx="310" cy="135" r="6" fill="#2E7DD1"/>
+                  <circle cx="345" cy="100" r="5.5" fill="#2E7DD1"/>
+                  <circle cx="385" cy="115" r="5.5" fill="#1B2D5C" stroke="#2E7DD1" stroke-width="1.5"/>
+                  <circle cx="415" cy="90"  r="5" fill="#2E7DD1"/>
+                  <circle cx="445" cy="110" r="5.5" fill="#2E7DD1"/>
+                  <circle cx="435" cy="145" r="4.5" fill="#1B2D5C" stroke="#2E7DD1" stroke-width="1.5"/>
+                  <circle cx="400" cy="155" r="4.5" fill="#2E7DD1"/>
+                  <circle cx="438" cy="72"  r="4" fill="#6BAEE0"/>
+                  <circle cx="462" cy="88"  r="4" fill="#6BAEE0"/>
+                  <circle cx="458" cy="110" r="3.5" fill="#6BAEE0"/>
+                </g>
+              </g>
+
+              <!-- Etiquetas de los nodos -->
+              <g style="animation: fadeIn 1s ease 3s both;" fill="rgba(255,255,255,0.3)" font-family="monospace" font-size="8">
+                <text x="314" y="150">ECG</text>
+                <text x="388" y="106">NET</text>
+                <text x="418" y="82">BIO</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Badges flotantes -->
+          <div class="float-badge badge-a">
+            <div class="float-badge-icon">🏥</div>
+            <div>
+              <div class="float-badge-text">+10 Unidades medicas</div>
+              <div class="float-badge-sub">Clientes activos</div>
+            </div>
+          </div>
+          <div class="float-badge badge-b">
+            <div class="float-badge-icon">✅</div>
+            <div>
+              <div class="float-badge-text">Certificado</div>
+              <div class="float-badge-sub"></div>
+            </div>
+          </div>
+          <div class="float-badge badge-c">
+            <div class="float-badge-icon">📍</div>
+            <div>
+              <div class="float-badge-text">Nacional</div>
+              <div class="float-badge-sub">3 estados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-mouse"></div>
+  </div>
+</section>
+
+<!-- ─── SERVICIOS ─────────────────────────────────────────── -->
+<section id="servicios" aria-label="Servicios">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Lo que hacemos</span>
+      <h2 style="font-family:var(--font-display); font-weight:800; font-size:clamp(36px,5vw,56px); line-height:1; color:var(--navy); max-width:520px; letter-spacing:-0.5px;">
+        Soluciones integrales para el sector salud
+      </h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">01</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+        </div>
+        <h3 class="service-title">Consultoría Biomédica</h3>
+        <p class="service-desc">Diagnóstico tecnológico, planeación estratégica y gestión de riesgos para optimizar tu infraestructura de salud.</p>
+        <div class="service-tags">
+          <span class="service-tag">Diagnóstico</span>
+          <span class="service-tag">Estrategia</span>
+          <span class="service-tag">Normativa</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">02</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 7h.01M12 7h.01M17 7h.01"/></svg>
+        </div>
+        <h3 class="service-title">Equipamiento Médico</h3>
+        <p class="service-desc">Selección, adquisición, instalación e integración de equipos médicos de última generación con soporte total.</p>
+        <div class="service-tags">
+          <span class="service-tag">Mantenimiento</span>
+          <span class="service-tag">Planes estrategicos</span>
+          <span class="service-tag">Soporte técnico</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-num">03</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="service-title">Sistemas de Información Médica</h3>
+        <p class="service-desc">Sistemas de gestión y almacenamiento de información médica digital.</p>
+        <div class="service-tags">
+          <span class="service-tag">ERP, CRM y sistemas de gestión</span>
+          <span class="service-tag">Soluciones informáticas</span>
+          <span class="service-tag">Integración de sistemas</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-4">
+        <div class="service-num">04</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="service-title">Gestión de Proyectos</h3>
+        <p class="service-desc">Dirección técnica y administrativa de proyectos de equipamiento e infraestructura médica de inicio a cierre.</p>
+        <div class="service-tags">
+          <span class="service-tag">PMI</span>
+          <span class="service-tag">Control de calidad</span>
+          <span class="service-tag">Seguimiento</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NOSOTROS ──────────────────────────────────────────── -->
+<section id="nosotros" aria-label="Quiénes somos">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <span class="section-tag">Quiénes somos</span>
+        <h2 class="about-title">Expertos que entienden la salud</h2>
+        <p class="about-text">
+          Somos una consultora de ingeniería biomédica fundada en 2023 en Chiapas, México. Nuestro equipo especializado de ingenieros y técnicos certificados ha trabajado con hospitales públicos y privados, clínicas especializadas y laboratorios para garantizar la calidad en la atención ingenieril al área médica.
+        </p>
+        <p class="about-text">
+          Combinamos rigor técnico, conocimiento normativo profundo y un genuino compromiso con mejorar la atención al paciente a través de la tecnología adecuada.
+        </p>
+        <div class="about-values">
+          <div class="about-value">
+            <div class="about-value-title">Misión</div>
+            <div class="about-value-text">Proveer soluciones tecnológicas que elevan la calidad de la atención médica.</div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-title">Visión</div>
+            <div class="about-value-text">Ser el referente nacional en consultoría biomédica integral e innovadora en crecimiento.</div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-title">Valores</div>
+            <div class="about-value-text">Excelencia, integridad, innovación y compromiso con resultados.</div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-title">Cobertura</div>
+            <div class="about-value-text">Presencia en +3 estados. Respuesta en menos de 48 horas.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right reveal reveal-delay-2">
+        <div class="about-card">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="about-card-title">Equipo capacitado</div>
+            <div class="about-card-text">Nuestro equipo está compuesto por ingenieros y técnicos certificados con amplia experiencia en el sector biomédico.</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="about-card-title">Respuesta rápida garantizada</div>
+            <div class="about-card-text">Tiempo de respuesta menor a 48 horas para emergencias técnicas en todo el país. Disponibilidad 24/7 días.</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+          </div>
+          <div>
+            <div class="about-card-title">Resultados medibles</div>
+            <div class="about-card-text">Cada proyecto incluye KPIs definidos y reporte de impacto. Tus resultados son los nuestros.</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="about-card-title">Equipo multidisciplinario</div>
+            <div class="about-card-text">Contamos con ingenieros biomédicos, técnicos especializados y gestores de proyectos certificados.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ESTADÍSTICAS ──────────────────────────────────────── -->
+<section id="estadisticas" aria-label="Estadísticas">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number"><span class="counter" data-target="8">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Proyectos completados</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-number"><span class="counter" data-target="10">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Instituciones atendidas</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-number"><span class="counter" data-target="98">0</span><span class="stat-suffix">%</span></div>
+        <div class="stat-label">Índice de satisfacción</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-number"><span class="counter" data-target="+3">0</span></div>
+        <div class="stat-label">Estados con presencia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── POR QUÉ CÉNIT ─────────────────────────────────────── -->
+<section id="porque" aria-label="Por qué elegirnos">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-left reveal">
+        <span class="section-tag">Por qué elegirnos</span>
+        <h2 class="why-headline">Lo que nos hace diferentes</h2>
+        <p class="why-sub">En un sector tan crítico como la salud, la diferencia entre un proveedor y un socio estratégico se mide en confianza, resultados y presencia cuando más se necesita.</p>
+        <div class="why-cta-block">
+          <div class="why-cta-title">¿Listo para comenzar?</div>
+          <div class="why-cta-text">Agenda una consulta inicial gratuita. Nuestro equipo evaluará tus necesidades sin ningún compromiso.</div>
+          <a href="#contacto" class="btn btn-primary">Solicitar consulta gratuita</a>
+        </div>
+      </div>
+
+      <div class="why-items">
+        <div class="why-item reveal">
+          <div class="why-item-num">01</div>
+          <div class="why-item-body">
+            <div class="why-item-title">Especialización profunda en biomédica</div>
+            <div class="why-item-text">No somos generalistas. Todos nuestros ingenieros tienen formación específica en el sector salud, con certificaciones nacionales e internacionales vigentes.</div>
+          </div>
+        </div>
+        <div class="why-item reveal reveal-delay-1">
+          <div class="why-item-num">02</div>
+          <div class="why-item-body">
+            <div class="why-item-title">Enfoque en resultados medibles</div>
+            <div class="why-item-text">Cada proyecto arranca con KPIs definidos y cierra con un reporte de impacto. Si no hay resultados medibles, no fue un buen proyecto.</div>
+          </div>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <div class="why-item-num">03</div>
+          <div class="why-item-body">
+            <div class="why-item-title">Acompañamiento post-proyecto</div>
+            <div class="why-item-text">Nuestro servicio no termina en la entrega. Incluimos visitas de seguimiento, soporte técnico y actualización normativa durante el periodo de garantía.</div>
+          </div>
+        </div>
+        <div class="why-item reveal reveal-delay-3">
+          <div class="why-item-num">04</div>
+          <div class="why-item-body">
+            <div class="why-item-title">Acceso a tecnología global</div>
+            <div class="why-item-text">Trabajamos con fabricantes y distribuidores líderes mundiales, lo que nos permite ofrecer las mejores opciones de equipamiento al precio más competitivo del mercado.</div>
+          </div>
+        </div>
+        <div class="why-item reveal reveal-delay-4">
+          <div class="why-item-num">05</div>
+          <div class="why-item-body">
+            <div class="why-item-title">85% de clientes recurrentes</div>
+            <div class="why-item-text">El mejor indicador de calidad es que nuestros clientes nos eligen de nuevo. Más del 85% de nuestros proyectos provienen de clientes anteriores o referidos.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTORES ───────────────────────────────────────────── -->
+<section id="sectores" aria-label="Sectores que atendemos">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto 0;">
+      <span class="section-tag" style="justify-content:center;">Sectores</span>
+      <h2 style="font-family:var(--font-display); font-weight:800; font-size:clamp(36px,5vw,54px); line-height:1; color:var(--navy); letter-spacing:-0.5px;">
+        ¿A quién atendemos?
+      </h2>
+      <p style="font-size:15px; color:var(--gray-m); line-height:1.75; margin-top:1rem;">
+        Trabajamos con instituciones de salud de todos los tamaños y perfiles operativos.
+      </p>
+    </div>
+
+    <div class="sectors-grid">
+      <div class="sector-card reveal reveal-delay-1">
+        <span class="sector-emoji" role="img" aria-label="Hospital">🏥</span>
+        <h3 class="sector-title">Hospitales públicos y privados</h3>
+        <p class="sector-text">Proyectos integrales de equipamiento, modernización tecnológica y programas de capacitación para el personal médico y técnico.</p>
+      </div>
+      <div class="sector-card reveal reveal-delay-2">
+        <span class="sector-emoji" role="img" aria-label="Clínica">🏨</span>
+        <h3 class="sector-title">Clínicas especializadas</h3>
+        <p class="sector-text">Soluciones a la medida para clínicas de especialidad: cardiología, oncología, imagen diagnóstica, rehabilitación y más.</p>
+      </div>
+      <div class="sector-card reveal reveal-delay-3">
+        <span class="sector-emoji" role="img" aria-label="Laboratorio">🔬</span>
+        <h3 class="sector-title">Laboratorios clínicos</h3>
+        <p class="sector-text">Equipamiento y validación para laboratorios de análisis clínicos, patología y microbiología con cumplimiento normativo.</p>
+      </div>
+      <div class="sector-card reveal">
+        <span class="sector-emoji" role="img" aria-label="IMSS ISSSTE">👨‍⚕️</span>
+        <h3 class="sector-title">Servicios personalizados</h3>
+        <p class="sector-text">Soluciones a la medida para sistemas de gestión de clínica y personales.</p>
+      </div>
+      <div class="sector-card reveal reveal-delay-1">
+        <span class="sector-emoji" role="img" aria-label="Universidad">🎓</span>
+        <h3 class="sector-title">Universidades y centros de investigación</h3>
+        <p class="sector-text">Equipamiento y soporte para laboratorios académicos, programas de investigación biomédica y centros de simulación clínica.</p>
+      </div>
+      <div class="sector-card reveal reveal-delay-2">
+        <span class="sector-emoji" role="img" aria-label="Consultorios">👨‍⚕️</span>
+        <h3 class="sector-title">Consultorios y centros ambulatorios</h3>
+        <p class="sector-text">Soluciones escalables para consultorios, centros de diagnóstico y atención ambulatoria con presupuestos ajustados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESO ────────────────────────────────────────────── -->
+<section id="proceso" aria-label="Nuestro proceso">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:560px; margin:0 auto 0;">
+      <span class="section-tag" style="justify-content:center;">Cómo trabajamos</span>
+      <h2 style="font-family:var(--font-display); font-weight:800; font-size:clamp(36px,5vw,52px); line-height:1; color:var(--navy); letter-spacing:-0.5px;">
+        Nuestro proceso en 5 pasos
+      </h2>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-circle">
+          <span class="step-num">1</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="step-title">Diagnóstico</div>
+        <div class="step-text">Evaluación in situ del estado actual y levantamiento de necesidades.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-circle">
+          <span class="step-num">2</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </div>
+        <div class="step-title">Propuesta técnica</div>
+        <div class="step-text">Plan detallado con opciones, costos y cronograma a medida.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-circle">
+          <span class="step-num">3</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="step-title">Aprobación</div>
+        <div class="step-text">Revisión conjunta y ajustes hasta alcanzar la propuesta ideal.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-circle">
+          <span class="step-num">4</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="step-title">Implementación</div>
+        <div class="step-text">Ejecución supervisada con reportes de avance periódicos.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-circle">
+          <span class="step-num">5</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="step-title">Cierre y seguimiento</div>
+        <div class="step-text">Entrega de expediente completo y visitas de seguimiento incluidas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACTO ──────────────────────────────────────────── -->
+<section id="contacto" aria-label="Contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <span class="section-tag">Hablemos</span>
+        <h2 class="contact-title">¿Cómo podemos ayudarte?</h2>
+        <p class="contact-sub">Cuéntanos sobre tu institución y tu proyecto. La consulta inicial es completamente gratuita y sin compromiso.</p>
+
+        <div class="contact-info-items">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38A2 2 0 0 1 3.6 1.17h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Teléfono</div>
+              <div class="contact-info-value">+52 (934) 203 0604</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Correo electrónico</div>
+              <div class="contact-info-value">cenitsb@gmail.com</div>
+            </div>
+          </div>
+          <a href="https://www.instagram.com/cenitsb/" target="_blank" rel="noopener noreferrer" class="contact-info-item" aria-label="Visítanos en Instagram">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Instagram</div>
+              <div class="contact-info-value">@cenitsb</div>
+            </div>
+          </a>
+          <a href="https://wa.me/529342030604" target="_blank" rel="noopener noreferrer" class="contact-info-item" aria-label="Contáctanos por WhatsApp">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 2.84 6.27a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">WhatsApp</div>
+              <div class="contact-info-value">+52 (934) 203 0604</div>
+            </div>
+          </a>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Ubicación</div>
+              <div class="contact-info-value">Chiapas, México</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal reveal-delay-2" action="https://formspree.io/f/xnjrdrrn" method="POST" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre" class="form-label">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="institucion" class="form-label">Institución</label>
+            <input type="text" id="institucion" name="institucion" class="form-input" placeholder="Hospital / Clínica">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="correo" class="form-label">Correo electrónico *</label>
+            <input type="email" id="correo" name="email" class="form-input" placeholder="correo@ejemplo.com" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="+52 (___) ___ ____">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="servicio" class="form-label">Servicio de interés *</label>
+          <select id="servicio" name="servicio" class="form-select" required>
+            <option value="" disabled selected>Selecciona un servicio</option>
+            <option value="consultoria">Consultoría biomédica</option>
+            <option value="equipamiento">Equipamiento médico</option>
+            <option value="capacitacion">Capacitación especializada</option>
+            <option value="gestion">Gestión de proyectos</option>
+            <option value="sistemas">ERP, CRM o Sistema de Gestión</option>
+            <option value="otro">Otro / No sé aún</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensaje" class="form-label">Descripción del proyecto *</label>
+          <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Cuéntanos brevemente qué necesitas y el tamaño aproximado de tu institución..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">
+          Enviar mensaje →
+        </button>
+        <div class="form-notice" id="formNotice">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Responderemos en menos de 24 horas hábiles. Tu información es confidencial.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">CÉNIT</div>
+        <div class="footer-brand-sub">Soluciones Biomédicas</div>
+        <p class="footer-brand-desc">Consultoría, equipamiento y capacitación especializada para instituciones de salud en México y Latinoamérica.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios</div>
+        <ul class="footer-links-list">
+          <li><a href="#servicios">Consultoría biomédica</a></li>
+          <li><a href="#servicios">Equipamiento médico</a></li>
+          <li><a href="#servicios">Capacitación técnica</a></li>
+          <li><a href="#servicios">Gestión de proyectos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links-list">
+          <li><a href="#nosotros">Quiénes somos</a></li>
+          <li><a href="#porque">Por qué elegirnos</a></li>
+          <li><a href="#sectores">Sectores</a></li>
+          <li><a href="#proceso">Nuestro proceso</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <ul class="footer-links-list">
+          <li><a href="tel:+524421234567">+52 (934) 203 0604</a></li>
+          <li><a href="mailto:contacto@cenitbiomedicas.mx">cenitsb@gmail.com</a></li>
+          <li><a href="#contacto">Agendar consulta</a></li>
+          <li><a href="#contacto">Chiapas, México</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2026 Cénit Soluciones Biomédicas S.A. de C.V. Todos los derechos reservados.</div>
+      <div class="footer-tagline">"Tecnología al servicio de la salud"</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── JAVASCRIPT ─────────────────────────────────────────── -->
+<script>
+/* ── NAV scroll ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ── Mobile menu ── */
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  document.getElementById('mobileMenu').classList.toggle('open', menuOpen);
+}
+
+/* ── Reveal on scroll ── */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+/* ── Counter animation ── */
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const duration = 1800;
+  const step = target / (duration / 16);
+  let current = 0;
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = Math.round(current);
+    if (current >= target) clearInterval(timer);
+  }, 16);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.counter').forEach(animateCounter);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('#estadisticas, #hero').forEach(s => counterObserver.observe(s));
+
+/* ── Form submit with Formspree ── */
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const form = this;
+  const btn = document.getElementById('submitBtn');
+  const notice = document.getElementById('formNotice');
+  
+  btn.disabled = true;
+  btn.style.background = '#2A4080';
+  btn.textContent = 'Enviando...';
+
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if (response.ok) {
+      btn.style.background = '#16A34A';
+      btn.textContent = '✓ Mensaje enviado correctamente';
+      notice.style.background = 'rgba(34, 197, 94, 0.1)';
+      notice.style.color = 'rgba(34, 197, 94, 0.8)';
+      form.reset();
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.style.background = '';
+        btn.textContent = 'Enviar mensaje →';
+        notice.style.background = '';
+        notice.style.color = '';
+      }, 3000);
+    } else {
+      throw new Error('Error en la respuesta');
+    }
+  })
+  .catch(error => {
+    btn.style.background = '#C0392B';
+    btn.textContent = '⚠ Error al enviar. Intenta de nuevo';
+    btn.disabled = false;
+    setTimeout(() => {
+      btn.style.background = '';
+      btn.textContent = 'Enviar mensaje →';
+    }, 3000);
+  });
+});
+
+/* ── Active nav link on scroll ── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current
+      ? 'var(--accent-l)' : '';
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
